@@ -1,0 +1,15 @@
+{
+    "name": "lennox/api_clinica",
+    "autoload": {
+        "psr-4": {
+            "Lennox\\ApiClinica\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lennox",
+            "email": "dayronstovar@gmail.com"
+        }
+    ],
+    "require": {}
+}
