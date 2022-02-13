@@ -22,6 +22,8 @@ $router->get('/cita/{dni}',function($dni){echo CitaController::getDni($dni);});
 
 $router->post('/cita',function(){echo( CitaController::registrarCita());});
 
+$router->delete('/cita/{id}',function($id){echo( CitaController::delete($id));});
+
 
 $router->get('/doctores',function(){echo DoctorController::get();});
 $router->post('/doctores',function(){echo DoctorController::registrarDoctor() ;});

@@ -161,5 +161,25 @@ class CitaController extends Controller {
  
     }
 
+
+    static function delete($id){
+
+        $cita =  new Cita;
+
+        $cita = $cita->delete($id);
+
+        if($cita){
+
+            return  json_encode(["error" => false, "mensaje"=> "cita eliminada satifactoriamente"]);
+
+        }else{
+            return json_encode( ["error" => true, "mensaje"=> "error al eliminar la cita"]);
+        }
+
+      
+
+
+    }
+
     
 }

@@ -30,5 +30,27 @@ class Model {
         
     }
 
+    public function delete($id)
+    {
+        try {
+            
+            $query = $this->query("DELETE  FROM $this->modelo WHERE id=$id");
+
+            if($query->rowCount() > 0){
+
+                return true;
+
+            }else{
+                return false;
+            }
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
+    }
+
     
 }

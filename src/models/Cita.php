@@ -12,6 +12,12 @@ class Cita  extends Model{
     private Paciente $paciente; 
     private Clinica $clinica;
     private string $sintomas; */
+
+    public function __construct() {
+        $this->modelo =  'citas';
+
+        parent::__construct();
+    }
     
 
 
