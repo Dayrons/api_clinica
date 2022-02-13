@@ -1,6 +1,9 @@
 <?php
 
 use Lennox\ApiClinica\controllers\CitaController;
+use Lennox\ApiClinica\controllers\DoctorController;
+use Lennox\ApiClinica\controllers\PacienteController;
+
 $router = new \Bramus\Router\Router();
 
 
@@ -14,13 +17,13 @@ $router->get('/',function(){
 
 $router->get('/cita',function(){echo CitaController::get();});
 
-$router->post('/cita',function(){print_r( CitaController::registrarCita());});
+$router->post('/cita',function(){echo( CitaController::registrarCita());});
 
-$router->get('/doctores',function(){echo CitaController::get();});
-$router->post('/doctores',function(){echo CitaController::get();});
+$router->get('/doctores',function(){echo DoctorController::get();});
+$router->post('/doctores',function(){echo DoctorController::registrarDoctor() ;});
 
-$router->get('/pacientes',function(){echo CitaController::get();});
-$router->post('/pacientes',function(){echo CitaController::get();});
+$router->get('/pacientes',function(){echo PacienteController::get();});
+$router->post('/pacientes',function(){echo PacienteController::get();});
 
 
 $router->run();

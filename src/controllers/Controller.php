@@ -36,4 +36,7 @@ class Controller {
         
     }
     
+    public function render( string $nombre, array $data = []){
+        require __DIR__ . "/src/$nombre" . '.php';
+    }
 }

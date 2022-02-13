@@ -7,20 +7,23 @@ use PDOException;
 
 class Cita  extends Model{
 
+    
 
 
-    // public function __construct(
-    //     private Doctor $doctor,
-    //     private $fecha,
-    //     private Clinica $clinica,
-    //     private Paciente $paciente,
-    // ) {}
+   /*  public function __construct(
+        // private Doctor $doctor,
+        // private $fecha,
+        // private Paciente $paciente, 
+        // private Clinica $clinica,
+        // private string $sintomas,
+    ) {} */
 
 
     public function save($campos)
     {
         try {
-            $query = $this->prepare("INSERT INTO citas(doctor,paciente) VALUES (:doctor, :paciente)");
+            
+        $query = $this->prepare("INSERT INTO citas(doctor,paciente, clinica, sintomas) VALUES (:doctor, :paciente, :clinica, :sintomas)");
 
         $query->execute($campos);
 
