@@ -25,12 +25,13 @@ class Controller {
         }
 
         if($validacion){
-            return $values;
+            return ["error" => false , 'parametros'=> $values];
+           
         }
 
         else{
             http_response_code(401);
-            return ["mensaje" => "parametro invalidos"];
+            return ["error" => true, "mensaje" => "parametro invalidos"];
         }
       
         

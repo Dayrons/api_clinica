@@ -101,19 +101,20 @@ class CitaController extends Controller {
 
     public  static function registrarCita()
     {
-        $datos = parent::require([ "sintomas", "dni" , "id_doctor"]);
+        $parametros = parent::require([ "sintomas", "dni" , "id_doctor"]);
 
+        if($parametros['error']){
 
-        $paciente= new Paciente;
+            return  json_encode($parametros);
+
+        }else{
+            $datos = $parametros['parametros'];
+            $paciente= new Paciente;
 
         $paciente = $paciente->getDni($datos['dni']);
 
         $doctor = new Doctor;
         $doctor = $doctor->getId($datos['id_doctor']);
-
-
-       
-    
 
         if(!is_null($paciente) && !is_null($doctor)){
 
@@ -134,6 +135,19 @@ class CitaController extends Controller {
 
             
         }
+            
+        }
+
+
+
+
+        
+
+
+       
+    
+
+        
 
         
        
