@@ -11,9 +11,6 @@ class DoctorController extends Controller{
 
         $doctor  = new Doctor;
 
-      
-
-    
         $doctor->save($datos);
     }
 

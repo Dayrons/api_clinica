@@ -12,7 +12,8 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/config/');
 $dotenv->load();
 
 $router->get('/',function(){
-    echo 'hola mundo';
+    $html = file_get_contents(  __DIR__.'/views/index.php');
+     print $html ;
 });
 
 $router->get('/cita',function(){echo CitaController::get();});
@@ -23,7 +24,9 @@ $router->get('/doctores',function(){echo DoctorController::get();});
 $router->post('/doctores',function(){echo DoctorController::registrarDoctor() ;});
 
 $router->get('/pacientes',function(){echo PacienteController::get();});
-$router->post('/pacientes',function(){echo PacienteController::get();});
+$router->post('/pacientes',function(){echo PacienteController::registrarPaciente();});
 
 
 $router->run();
+
+?>

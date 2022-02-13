@@ -11,12 +11,10 @@ class CitaController extends Controller {
     static function  get()
     {
 
-      /*   $cita = new Cita();
+        $cita = new Cita();
         $citas = $cita->get();
-        return $citas; */
+        return $citas;
 
-        return 'nada';
-       
     }
 
     public  static function registrarCita()

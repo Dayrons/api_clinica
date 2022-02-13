@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 error_reporting(E_ALL); // Error/Exception engine, always use E_ALL
 
 ini_set('ignore_repeated_errors', TRUE); // always use TRUE
@@ -13,3 +13,4 @@ error_log( "Hello, errors!" );
 
 require 'vendor/autoload.php';
 require './src/routes.php';
+
