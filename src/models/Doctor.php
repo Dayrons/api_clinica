@@ -17,9 +17,23 @@ class Doctor extends Model{
     public function save($campos)
     {
         try {
-            $query = $this->prepare("INSERT INTO doctores(nombre, apellido, especializacion, genero, edad, telefono, dni) VALUES ( :nombre, :apellido, :especializacion, :genero, :edad, :telefono, :dni)");
+            $exist = $this->exist($campos['dni'],$campos['email']);
 
-        $query->execute($campos);
+        
+            if(!$exist){
+                $query = $this->prepare("INSERT INTO doctores(nombre, apellido, especializacion, genero, edad, telefono, email, dni) VALUES ( :nombre, :apellido, :especializacion, :genero, :edad, :telefono, :email , :dni)");
+
+            $query->execute($campos);
+
+            return json_encode(['registro'=> true, "mensaje"=> "doctor registrado satifactoriamente"]);
+
+
+            }else{
+                return json_encode(['registro'=> false, "mensaje"=> "ya existe un doctor con los siguientes datos"]);
+
+            }
+
+            
 
         } catch (PDOException $e) {
 
@@ -27,10 +41,7 @@ class Doctor extends Model{
                 error_log($e->getMessage());
                 return false;
         }
-
-        
     
-        
     }
 
     public function get()
@@ -46,6 +57,32 @@ class Doctor extends Model{
                 error_log($e->getMessage());
                 return false;
         }
+
+    }
+
+    private function exist($dni, $email)
+    {
+
+      
+        $query = $this->prepare("SELECT COUNT(*) FROM doctores WHERE dni= ? OR email = ? ");
+
+        $query->execute([
+           $dni,
+            $email
+        ]);
+
+        $row = $query->fetch(PDO::FETCH_NUM);
+
+       
+
+        if($row[0] == 1){
+
+            return true;
+
+        }
+
+    
+        return false;
 
     }
 

@@ -7,11 +7,13 @@ class DoctorController extends Controller{
 
     static function registrarDoctor()
     {
-        $datos = parent::require(['nombre', 'apellido', 'especializacion', 'genero', 'edad', 'telefono', 'dni']);
+
+
+        $datos = parent::require(['nombre', 'apellido', 'especializacion', 'genero', 'edad', 'telefono', 'email', 'dni']);
 
         $doctor  = new Doctor;
 
-        $doctor->save($datos);
+        return $doctor->save($datos);
     }
 
     static function get()
@@ -20,6 +22,8 @@ class DoctorController extends Controller{
         return $doctores = $doctor->get();
  
     }
+
+   
 
 
 }

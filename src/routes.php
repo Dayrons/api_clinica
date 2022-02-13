@@ -18,10 +18,15 @@ $router->get('/',function(){
 
 $router->get('/cita',function(){echo CitaController::get();});
 
+$router->get('/cita/{dni}',function($dni){echo CitaController::getDni($dni);});
+
 $router->post('/cita',function(){echo( CitaController::registrarCita());});
+
 
 $router->get('/doctores',function(){echo DoctorController::get();});
 $router->post('/doctores',function(){echo DoctorController::registrarDoctor() ;});
+
+
 
 $router->get('/pacientes',function(){echo PacienteController::get();});
 $router->post('/pacientes',function(){echo PacienteController::registrarPaciente();});

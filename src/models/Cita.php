@@ -39,6 +39,22 @@ class Cita  extends Model{
         
     }
 
+    public function getDni($dni)
+    {
+
+        try {
+            
+            $query = $this->query("SELECT * FROM citas WHERE dni=$dni");
+            return json_encode($query->fetchAll(PDO::FETCH_ASSOC));
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
+        
+    }
 
     public function get()
     {

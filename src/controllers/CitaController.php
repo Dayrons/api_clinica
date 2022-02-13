@@ -17,6 +17,16 @@ class CitaController extends Controller {
 
     }
 
+    static function getDni($dni){
+
+        $cita =  new Cita;
+
+        return $citas =  $cita->getDni($dni);
+
+         
+
+    }
+
     public  static function registrarCita()
     {
         $datos = parent::require(["paciente", "doctor", "clinica", "sintomas"]);
