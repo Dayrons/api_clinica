@@ -16,7 +16,9 @@ class DoctorController extends Controller{
 
     static function get()
     {
-        
+        $doctor = new Doctor;
+        return $doctores = $doctor->get();
+ 
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace Lennox\ApiClinica\models;
 
+use PDO;
 use PDOException;
 
 class Doctor extends Model{
@@ -30,6 +31,22 @@ class Doctor extends Model{
         
     
         
+    }
+
+    public function get()
+    {
+        try {
+            
+            $query = $this->query("SELECT * FROM doctores ");
+            return json_encode($query->fetchAll(PDO::FETCH_ASSOC));
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
+
     }
 
 }
