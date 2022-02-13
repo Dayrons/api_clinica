@@ -87,6 +87,41 @@ class Paciente extends Model{
 
     }
 
+    public function getId($id){
+        
+        try {
+            
+            $query = $this->query("SELECT * FROM pacientes WHERE id=$id");
+
+            $paciente  = $query->fetch(PDO::FETCH_ASSOC);
+
+            if($query->rowCount() == 1){
+
+                return new Paciente(
+                    $paciente['id'],
+                    $paciente['dni'],
+                    $paciente['edad'],
+                    $paciente['nombre'],
+                    $paciente['apellido'],
+                    $paciente['genero'],
+                    $paciente['telefono'],
+                    $paciente['email'],
+                   
+                ); 
+
+            }else{
+                return null;
+            }
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
+    }
+
+
     public function getDni($dni){
         try {
             

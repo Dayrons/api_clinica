@@ -18,13 +18,19 @@ class CitaController extends Controller {
       
         foreach ($citas as $cita){
 
-             
+            $paciente = new Paciente;
+
+            $paciente = $paciente->getId($cita['paciente']);
+
 
             $doctor= new Doctor;
 
             $doctor = $doctor->getId($cita['doctor']);
 
-            $cita = ["cita" => ["sintomas" => $cita["sintomas"] ,"doctor"  => ["nombre" => $doctor->nombre ,"especialidad" => $doctor->especializacion]  ]];
+            $cita = ["cita" => [
+                "sintomas" => $cita["sintomas"],
+                "paciente" => [ "nombre" => $paciente->nombre, "dni" => $paciente->dni],
+                "doctor"  => ["nombre" => $doctor->nombre ,"especialidad" => $doctor->especializacion] ]];
 
             array_push($nuevasCitas,$cita);
 
