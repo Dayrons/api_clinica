@@ -34,7 +34,10 @@ $router->delete('/doctores/{id}',function($id){echo DoctorController::delete($id
 
 
 $router->get('/pacientes',function(){echo PacienteController::get();});
+
 $router->post('/pacientes',function(){echo PacienteController::registrarPaciente();});
+
+$router->delete('/pacientes/{id}',function($id){echo PacienteController::delete($id);});
 
 
 $router->run();

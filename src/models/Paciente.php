@@ -39,6 +39,7 @@ class Paciente extends Model{
         $this->telefono= $telefono;
         $this->email= $email;
 
+        $this->modelo = 'pacientes';
         parent::__construct();
         
     }

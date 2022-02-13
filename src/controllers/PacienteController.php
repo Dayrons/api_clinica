@@ -32,6 +32,21 @@ static function get()
     return  json_encode($paciente);
 }
 
+static function delete($id){
+    $paciente =  new Paciente;
+
+        $paciente = $paciente->delete($id);
+
+        if($paciente){
+
+            return  json_encode(["error" => false, "mensaje"=> "paciente eliminado satifactoriamente"]);
+
+        }else{
+            return json_encode( ["error" => true, "mensaje"=> "error al eliminar"]);
+        }
+
+}
+
    
 
 
