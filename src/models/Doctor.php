@@ -37,7 +37,9 @@ class Doctor extends Model{
         $this->genero= $genero;
         $this->telefono= $telefono;
         $this->email= $email;
-      
+
+
+        $this->modelo = 'doctores';
         parent::__construct();
         
     }

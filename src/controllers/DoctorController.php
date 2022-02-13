@@ -32,6 +32,25 @@ class DoctorController extends Controller{
  
     }
 
+    static function delete($id){
+
+        $doctor =  new Doctor;
+
+        $doctor = $doctor->delete($id);
+
+        if($doctor){
+
+            return  json_encode(["error" => false, "mensaje"=> "doctor eliminado satifactoriamente"]);
+
+        }else{
+            return json_encode( ["error" => true, "mensaje"=> "error al eliminar"]);
+        }
+
+      
+
+
+    }
+
    
 
 

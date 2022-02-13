@@ -26,7 +26,10 @@ $router->delete('/cita/{id}',function($id){echo( CitaController::delete($id));})
 
 
 $router->get('/doctores',function(){echo DoctorController::get();});
+
 $router->post('/doctores',function(){echo DoctorController::registrarDoctor() ;});
+
+$router->delete('/doctores/{id}',function($id){echo DoctorController::delete($id) ;});
 
 
 
