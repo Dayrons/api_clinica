@@ -78,7 +78,7 @@ class Doctor extends Model{
         try {
             
             $query = $this->query("SELECT * FROM doctores ");
-            return json_encode($query->fetchAll(PDO::FETCH_ASSOC));
+            return $query->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
 

@@ -19,8 +19,11 @@ static function get()
 {
     $paciente = new Paciente;
 
-    return $pacientes = $paciente->get();
+    $paciente = $paciente->get();
+    return  json_encode($paciente);
 }
+
+   
 
 
 }

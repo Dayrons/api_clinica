@@ -75,10 +75,8 @@ class Paciente extends Model{
     {
         try {
             
-           
-
             $query = $this->query("SELECT * FROM pacientes ");
-            return json_encode($query->fetchAll(PDO::FETCH_ASSOC));
+            return $query->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
 
