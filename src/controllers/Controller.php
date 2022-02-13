@@ -31,7 +31,7 @@ class Controller {
 
         else{
             http_response_code(401);
-            return ["error" => true, "mensaje" => "parametro invalidos"];
+            return ["error" => true, "mensaje" => "faltan parametros para realizar el registro"];
         }
       
         
