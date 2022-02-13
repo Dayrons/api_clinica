@@ -17,7 +17,9 @@ static function registrarPaciente()
 
 static function get()
 {
-    
+    $paciente = new Paciente;
+
+    return $pacientes = $paciente->get();
 }
 
 
