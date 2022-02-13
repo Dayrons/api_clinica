@@ -7,5 +7,6 @@ class Doctor extends Model{
     private string $especializacion;
     private string $genero;
     private int $edad;
+    private string $telefono;
 
 }

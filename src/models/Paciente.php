@@ -9,5 +9,6 @@ class Paciente extends Model{
     private string $estatura;
     private string $peso;
     private string $cedula;
+    private string $telefono;
 
 }
