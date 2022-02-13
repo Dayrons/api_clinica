@@ -7,11 +7,11 @@ class PacienteController extends Controller{
 
 static function registrarPaciente()
 {
-    $datos = parent::require(['nombre', 'apellido',  'genero', 'edad', 'telefono', 'dni']);
+    $datos = parent::require(['nombre', 'apellido',  'genero', 'edad', 'telefono', 'email', 'dni']);
 
     $paciente  = new Paciente;
 
-    $paciente->save($datos);
+    return $paciente->save($datos);
     
 }
 
