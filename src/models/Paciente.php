@@ -6,13 +6,43 @@ use PDO;
 use PDOException;
 
 class Paciente extends Model{ 
-    private string $id; 
-    private int $edad;
-    private string $genero;
-    private string $estatura;
-    private string $peso;
-    private string $cedula;
-    private string $telefono;
+    public ?int $id ;
+    public ?string $dni ; 
+    public ?int $edad;
+    public ?string $nombre ;
+    public ?string $apellido ;
+    public ?string $genero;
+    public ?string $telefono;
+    public ?string $email ;
+
+
+ 
+    
+
+    public function __construct(
+        $id =  null,
+        $dni = null,
+        $edad = null,
+        $nombre = null,
+        $apellido = null,
+        $genero = null,
+        $telefono = null,
+        $email =  null,
+    )
+    {
+        $this->id= $id;
+        $this->dni= $dni;
+        $this->edad= $edad;
+        $this->nombre= $nombre;
+        $this->apellido= $apellido;
+        $this->genero= $genero;
+        $this->telefono= $telefono;
+        $this->email= $email;
+
+        parent::__construct();
+        
+    }
+    
 
     public function save($campos)
     {
@@ -57,6 +87,38 @@ class Paciente extends Model{
                 return false;
         }
 
+    }
+
+    public function getDni($dni){
+        try {
+            
+            $query = $this->query("SELECT * FROM pacientes WHERE dni=$dni");
+
+            $paciente  = $query->fetch(PDO::FETCH_ASSOC);
+
+            if($query->rowCount() == 1){
+                return new Paciente(
+                    $paciente['id'],
+                    $paciente['dni'],
+                    $paciente['edad'],
+                    $paciente['nombre'],
+                    $paciente['apellido'],
+                    $paciente['genero'],
+                    $paciente['telefono'],
+                    $paciente['email'],
+                   
+                ); 
+
+            }else{
+                return null;
+            }
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
     }
 
     private function exist($dni, $email)

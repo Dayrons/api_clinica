@@ -6,13 +6,42 @@ use PDO;
 use PDOException;
 
 class Doctor extends Model{
-    private string $id;
-    private string $nombre;
-    private string $apellido;
-    private string $especializacion;
-    private string $genero;
-    private int $edad;
-    private string $telefono;
+    public ?int $id;
+    public ?string $dni;
+    public ?string $nombre;
+    public ?string $apellido;
+    public ?string $especializacion;
+    public ?string $genero;
+    public ?int $edad;
+    public ?string $telefono;
+
+    public function __construct(
+        $id =  null,
+        $dni = null,
+        $edad = null,
+        $nombre = null,
+        $apellido = null,
+        $especializacion = null,
+        $genero = null,
+        $telefono = null,
+        $email =  null,
+
+    ) {
+        
+        $this->id= $id;
+        $this->dni= $dni;
+        $this->edad= $edad;
+        $this->nombre= $nombre;
+        $this->apellido= $apellido;
+        $this->especializacion = $especializacion;
+        $this->genero= $genero;
+        $this->telefono= $telefono;
+        $this->email= $email;
+      
+        parent::__construct();
+        
+    }
+
 
     public function save($campos)
     {
@@ -84,6 +113,41 @@ class Doctor extends Model{
     
         return false;
 
+    }
+
+    public function getId($id){
+        
+        try {
+            
+            $query = $this->query("SELECT * FROM doctores WHERE id=$id");
+
+            $doctor  = $query->fetch(PDO::FETCH_ASSOC);
+
+            if($query->rowCount() == 1){
+
+                return new Doctor(
+                    $doctor['id'],
+                    $doctor['dni'],
+                    $doctor['edad'],
+                    $doctor['nombre'],
+                    $doctor['apellido'],
+                    $doctor['especializacion'],
+                    $doctor['genero'],
+                    $doctor['telefono'],
+                    $doctor['email'],
+                   
+                ); 
+
+            }else{
+                return null;
+            }
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
     }
 
 }

@@ -30,17 +30,5 @@ class Model {
         
     }
 
-    public function getId($id){
-        try {
-            
-            $query = $this->query("SELECT * FROM $this->modelo WHERE id=$id");
-           
-
-        } catch (PDOException $e) {
-
-            print_r($e->getMessage());
-                error_log($e->getMessage());
-                return false;
-        }
-    }
+    
 }
