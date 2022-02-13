@@ -16,7 +16,7 @@ class DoctorController extends Controller{
             $datos = $parametros['parametros'];
 
             $doctor  = new Doctor;
-    
+            http_response_code(201);
             return $doctor->save($datos);
         }
 

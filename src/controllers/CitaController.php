@@ -120,6 +120,7 @@ class CitaController extends Controller {
 
             $cita = new Cita();
              $cita->save($paciente, $doctor, $datos['sintomas']);
+             http_response_code(201);
             return json_encode(["registro" => true , "mensaje" => "cita registrada satifactoriamente" ]);
     
         }else{

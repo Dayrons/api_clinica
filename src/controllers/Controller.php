@@ -11,6 +11,7 @@ class Controller {
         $post =  json_decode( $post, true ); 
         $validacion =  true;
         $values =[];
+        $parametros_faltantes = '';
         foreach ($parametros as $parametro) {
 
             if(!empty($post[$parametro])){
@@ -18,8 +19,9 @@ class Controller {
                 $values[$parametro] = $post[$parametro];
                 
             }else{
+                $parametros_faltantes .= $parametro . ", ";
+
                 $validacion = false;
-                break;
             }
 
         }
@@ -30,8 +32,8 @@ class Controller {
         }
 
         else{
-            http_response_code(401);
-            return ["error" => true, "mensaje" => "faltan parametros para realizar el registro"];
+            http_response_code(400);
+            return ["error" => true, "mensaje" => "faltan parametros los siguientes parametros para relizar el registro: $parametros_faltantes"];
         }
       
         

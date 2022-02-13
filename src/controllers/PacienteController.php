@@ -7,11 +7,20 @@ class PacienteController extends Controller{
 
 static function registrarPaciente()
 {
-    $datos = parent::require(['nombre', 'apellido',  'genero', 'edad', 'telefono', 'email', 'dni']);
 
-    $paciente  = new Paciente;
+    $parametros = parent::require(['nombre', 'apellido',  'genero', 'edad', 'telefono', 'email', 'dni']);
 
-    return $paciente->save($datos);
+    if($parametros['error']){
+        return json_encode($parametros);
+    }else{
+        $datos = $parametros["parametros"];
+        $paciente  = new Paciente;
+        http_response_code(201);
+        return $paciente->save($datos);
+    }
+
+
+    
     
 }
 
