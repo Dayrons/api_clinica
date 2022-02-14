@@ -25,7 +25,7 @@
             <div>
             </div>
         </div>
-
+        <!-- CITAS -->
         <div class="container ">
             <h2>CITAS:</h2>
             <div>
@@ -38,7 +38,7 @@
                     <div class="peticion__metodo">
                         GET
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/cita">http://localhost/api_clinica/cita</a>
+                    <a class="peticion__url" href="/cita">/cita</a>
                 </div>
 
             </div>
@@ -61,7 +61,7 @@
                     <div class="peticion__metodo">
                         POST
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/cita">http://localhost/api_clinica/cita</a>
+                    <a class="peticion__url" href="/cita">/cita</a>
                 </div>
 
             </div>
@@ -77,14 +77,14 @@
                     <div class="peticion__metodo">
                         GET
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/cita">http://localhost/api_clinica/cita/{dni}</a>
+                    <a class="peticion__url" href="/cita">/cita/{dni}</a>
                 </div>
 
             </div>
 
 
         </div>
-
+        <!-- PACIENTES -->
         <div class="container">
             <h2>PACIENTES:</h2>
 
@@ -100,7 +100,7 @@
                     <div class="peticion__metodo">
                         GET
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/pacientes">http://localhost/api_clinica/pacientes</a>
+                    <a class="peticion__url" href="/pacientes">/pacientes</a>
                 </div>
 
             </div>
@@ -127,7 +127,28 @@
                     <div class="peticion__metodo">
                         POST
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/pacientes">http://localhost/api_clinica/pacientes</a>
+                    <a class="peticion__url" href="/pacientes">/pacientes</a>
+                </div>
+
+            </div>
+            
+            <div>
+                <h4>ACTUALIZAR PACIENTE:</h4>
+                <p>
+                    Debes pasar en el JSON solo los campos que deseas actualizar, y en la url el id del paciente que se desea actualizar
+                </p>
+
+                <pre>
+                    {
+                        ...
+                    }
+                </pre>
+            
+                <div class="peticion">
+                    <div class="peticion__metodo">
+                        PUT
+                    </div>
+                    <a class="peticion__url" href="/pacientes/{id}">/pacientes/{id}}</a>
                 </div>
 
             </div>
@@ -144,13 +165,13 @@
                     <div class="peticion__metodo">
                         DELETE
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/pacientes/{id}">http://localhost/api_clinica/pacientes/{id}</a>
+                    <a class="peticion__url" href="/pacientes/{id}">/pacientes/{id}</a>
                 </div>
 
             </div>      
 
         </div>
-
+        <!-- DOCTORES -->
         <div class="container">
             <h2>DOCTORES:</h2>
 
@@ -165,7 +186,7 @@
                     <div class="peticion__metodo">
                         GET
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/doctores">http://localhost/api_clinica/doctores</a>
+                    <a class="peticion__url" href="/doctores">/doctores</a>
                 </div>
 
             </div>
@@ -193,7 +214,7 @@
                     <div class="peticion__metodo">
                         POST
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/doctores">http://localhost/api_clinica/doctores</a>
+                    <a class="peticion__url" href="/doctores">/doctores</a>
                 </div>
 
             </div>
@@ -210,7 +231,106 @@
                     <div class="peticion__metodo">
                         DELETE
                     </div>
-                    <a class="peticion__url" href="http://localhost/api_clinica/doctores/{id}">http://localhost/api_clinica/doctores/{id}</a>
+                    <a class="peticion__url" href="/doctores/{id}">/doctores/{id}</a>
+                </div>
+
+            </div>
+
+            <div>
+                <h4>ACTUALIZAR DOCTOR:</h4>
+                <p>
+                    Debes pasar en el JSON solo los campos que deseas actualizar, y en la url el id del doctor que se desea actualizar
+                </p>
+
+                <pre>
+                    {
+                        ...
+                    }
+                </pre>
+            
+                <div class="peticion">
+                    <div class="peticion__metodo">
+                        PUT
+                    </div>
+                    <a class="peticion__url" href="/doctores/1">/doctores/{id}</a>
+                </div>
+
+            </div>
+
+            
+            <div>
+                <h4>LISTAR LAS CITAS DE UN DOCTOR:</h4>
+                <p>
+                    Pasar en el JSON el dni y el password del doctor que desea visualizar las citas
+                </p>
+                <pre>
+                    {
+                        "password": "",
+                        "dni": "",
+                      
+                    }
+                </pre>
+
+                
+            
+                <div class="peticion">
+                    <div class="peticion__metodo">
+                        DELETE
+                    </div>
+                    <a class="peticion__url" href="/doctores/citas">/doctores/citas</a>
+                </div>
+
+            </div>
+
+
+            <div>
+                <h4>VALIDAR CITA:</h4>
+                
+                <p>
+                    Para validar una cita debes pasar en el JSON el dni y password de un doctor registrado, y en la url el id de la cita relacionada con el doctor.
+                </p>
+
+                <pre>
+                    {
+                        "password": "",
+                        "dni": "",
+                      
+                    }
+                </pre>
+
+                
+            
+                <div class="peticion">
+                    <div class="peticion__metodo">
+                        POST
+                    </div>
+                    <a class="peticion__url" href="/doctores/aprobar-cita/3">/doctores/aprobar-cita/{id}</a>
+                </div>
+
+            </div>
+
+            <div>
+                <h4>RECHAR CITA:</h4>
+                
+                <p>
+                    Para rechazar una cita debes pasar en el JSON el dni y password de un doctor registrado, y en la url el id de la cita relacionada con el doctor.
+                </p>
+
+                <pre>
+                    {
+                        "password": "",
+                        "dni": "",
+                      
+                    }
+                </pre>
+
+                
+            
+                <div class="peticion">
+                    <div class="peticion__metodo">
+                        POST
+                    </div>
+                    <a class="peticion__url" href="/doctores/rechazar-cita/{id}">/doctores/rechazar-cita/{id}</a>
                 </div>
 
             </div>
