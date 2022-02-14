@@ -99,6 +99,20 @@ class Cita  extends Model
         }
     }
 
+    public function getDoctorId($id)
+    {
+        try {
+
+            $query = $this->query("SELECT * FROM citas WHERE doctor=$id");
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+            error_log($e->getMessage());
+            return false;
+        }
+    }
+
     public function aprobar($id){
 
 

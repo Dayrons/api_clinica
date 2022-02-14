@@ -39,6 +39,8 @@ $router->post('/doctores/rechazar-cita/{id}',function($id){echo DoctorController
 
 $router->post('/doctores/aprobar-cita/{id}',function($id){echo DoctorController::aprobarCita($id) ;});
 
+$router->post('/doctores/citas',function(){echo DoctorController::listarCitas() ;});
+
 
 
 $router->get('/pacientes',function(){echo PacienteController::get();});

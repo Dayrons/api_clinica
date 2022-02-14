@@ -266,7 +266,7 @@ class Doctor extends Model{
             
 
         }else{
-            return ['acceso'=>false , "mensaje'=>'no existe un doctor con el siguiente dni: $dni"];
+            return ['acceso'=>false , "mensaje" => "no existe un doctor con el siguiente dni: $dni"];
         }
 
         

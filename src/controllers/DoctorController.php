@@ -172,4 +172,37 @@ class DoctorController extends Controller
 
         
     }
+
+    static function listarCitas(){
+        $parametros = parent::require(['dni', 'password']);
+
+        if($parametros['error']){
+            return json_encode($parametros);
+        }else{
+
+            $doctor= new Doctor;
+
+            $password = $parametros['parametros']['password'];
+            $dni = $parametros['parametros']['dni'];
+            $acceso =$doctor->validar( $dni, $password);
+
+
+            if($acceso['acceso']){
+
+                $doctor= $acceso['doctor'];
+
+                $cita = new Cita;
+
+                return json_encode( $citas = $cita->getDoctorId($doctor->id));
+
+            }else{
+
+                return json_encode($acceso);
+            }
+
+            
+
+        }
+
+    }
 }

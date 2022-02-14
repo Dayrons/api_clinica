@@ -45,6 +45,8 @@ class CitaController extends Controller {
 
     }
 
+
+    
     static function getDni($dni)
     {
 
