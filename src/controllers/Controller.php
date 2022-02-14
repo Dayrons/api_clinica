@@ -35,7 +35,7 @@ class Controller {
                 return ["error" => false, 'parametros' => $values];
             } else {
                 http_response_code(400);
-                return ["error" => true, "mensaje" => "faltan parametros los siguientes parametros para relizar el registro: $parametros_faltantes"];
+                return ["error" => true, "mensaje" => "faltan parametros los siguientes parametros: $parametros_faltantes"];
             }
 
         } else {

@@ -28,6 +28,7 @@ class CitaController extends Controller {
             $doctor = $doctor->getId($cita['doctor']);
 
             $cita = ["cita" => [
+                "id" =>$cita['id'],
                 "sintomas" => $cita["sintomas"],
                 "paciente" => [ "nombre" => $paciente->nombre, "dni" => $paciente->dni],
                 "doctor"  => ["nombre" => $doctor->nombre ,"especialidad" => $doctor->especializacion],

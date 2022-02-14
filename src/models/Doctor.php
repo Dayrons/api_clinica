@@ -14,6 +14,7 @@ class Doctor extends Model{
     public ?string $genero;
     public ?int $edad;
     public ?string $telefono;
+    public ?string $password;
 
     public function __construct(
         $id =  null,
@@ -25,6 +26,7 @@ class Doctor extends Model{
         $genero = null,
         $telefono = null,
         $email =  null,
+        $password= null,
 
     ) {
         
@@ -37,6 +39,7 @@ class Doctor extends Model{
         $this->genero= $genero;
         $this->telefono= $telefono;
         $this->email= $email;
+        $this->password = $password;
 
 
         $this->modelo = 'doctores';
@@ -52,11 +55,14 @@ class Doctor extends Model{
 
         
             if(!$exist){
-                $query = $this->prepare("INSERT INTO doctores(nombre, apellido, especializacion, genero, edad, telefono, email, dni) VALUES ( :nombre, :apellido, :especializacion, :genero, :edad, :telefono, :email , :dni)");
 
-            $query->execute($campos);
+                $campos['password'] = password_hash($campos['password'],  PASSWORD_DEFAULT);
 
-            return json_encode(['registro'=> true, "mensaje"=> "doctor registrado satifactoriamente"]);
+                $query = $this->prepare("INSERT INTO doctores(nombre, apellido, especializacion, genero, edad, telefono, email, password , dni) VALUES ( :nombre, :apellido, :especializacion, :genero, :edad, :telefono, :email ,:password , :dni)");
+
+                $query->execute($campos);
+
+                return json_encode(['registro'=> true, "mensaje"=> "doctor registrado satifactoriamente"]);
 
 
             }else{
@@ -185,6 +191,7 @@ class Doctor extends Model{
                     $doctor['genero'],
                     $doctor['telefono'],
                     $doctor['email'],
+                    $doctor['password'],
                    
                 ); 
 
@@ -200,4 +207,69 @@ class Doctor extends Model{
         }
     }
 
+    public function getDni($dni){
+        try {
+            
+            $query = $this->query("SELECT * FROM doctores WHERE dni=$dni");
+
+            $doctor  = $query->fetch(PDO::FETCH_ASSOC);
+
+            if($query->rowCount() == 1){
+                return new Doctor(
+                    $doctor['id'],
+                    $doctor['dni'],
+                    $doctor['edad'],
+                    $doctor['nombre'],
+                    $doctor['apellido'],
+                    $doctor['especializacion'],
+                    $doctor['genero'],
+                    $doctor['telefono'],
+                    $doctor['email'],
+                    $doctor['password'],
+                   
+                ); 
+
+            }else{
+                return null;
+            }
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
+    }
+    
+
+    public function validar($dni, $password)
+    {  
+        $doctor = $this->getDni($dni);
+
+       
+
+        if(!is_null($doctor)){
+
+
+
+            if(password_verify($password, $doctor->password)){
+
+
+                return ['acceso'=>true , 'doctor'=>$doctor,];
+
+            }
+            else{
+                return ['acceso'=>false , 'mensaje'=>'contraseña invalida'];
+            }
+
+
+            
+
+        }else{
+            return ['acceso'=>false , "mensaje'=>'no existe un doctor con el siguiente dni: $dni"];
+        }
+
+        
+
+    }
 }

@@ -35,9 +35,9 @@ $router->put('/doctores/{id}',function($id){echo DoctorController::update($id) ;
 
 $router->delete('/doctores/{id}',function($id){echo DoctorController::delete($id) ;});
 
-$router->post('/doctores/{id}/rechazar-cita',function($id){echo DoctorController::aprobarCita($id) ;});
+$router->post('/doctores/rechazar-cita/{id}',function($id){echo DoctorController::rechazarCita($id) ;});
 
-$router->post('/doctores/{id}/aprobar-cita',function($id){echo DoctorController::rechazarCita($id) ;});
+$router->post('/doctores/aprobar-cita/{id}',function($id){echo DoctorController::aprobarCita($id) ;});
 
 
 
