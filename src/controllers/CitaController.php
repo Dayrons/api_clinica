@@ -105,7 +105,7 @@ class CitaController extends Controller {
 
     }
 
-    public  static function registrarCita()
+    public  static function registrar()
     {
         $parametros = parent::require([ "sintomas", "dni" , "id_doctor"]);
 

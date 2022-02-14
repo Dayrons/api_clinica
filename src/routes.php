@@ -21,14 +21,16 @@ $router->get('/cita',function(){echo CitaController::get();});
 
 $router->get('/cita/{dni}',function($dni){echo CitaController::getDni($dni);});
 
-$router->post('/cita',function(){echo( CitaController::registrarCita());});
+$router->post('/cita',function(){echo( CitaController::registrar());});
 
 $router->delete('/cita/{id}',function($id){echo( CitaController::delete($id));});
 
 
 $router->get('/doctores',function(){echo DoctorController::get();});
 
-$router->post('/doctores',function(){echo DoctorController::registrarDoctor() ;});
+$router->post('/doctores',function(){echo DoctorController::registrar() ;});
+
+$router->put('/doctores/{id}',function($id){echo DoctorController::update($id) ;});
 
 $router->delete('/doctores/{id}',function($id){echo DoctorController::delete($id) ;});
 
@@ -36,7 +38,7 @@ $router->delete('/doctores/{id}',function($id){echo DoctorController::delete($id
 
 $router->get('/pacientes',function(){echo PacienteController::get();});
 
-$router->post('/pacientes',function(){echo PacienteController::registrarPaciente();});
+$router->post('/pacientes',function(){echo PacienteController::registrar();});
 
 $router->put('/pacientes/{id}',function($id){echo PacienteController::update($id);});
 

@@ -10,7 +10,11 @@ class Controller {
 
         $post = @file_get_contents('php://input');
         $post =  json_decode($post, true);
+    
+
         if ($validar) {
+
+            
             $validacion =  true;
             $values = [];
             $parametros_faltantes = '';
@@ -24,13 +28,16 @@ class Controller {
 
                     $validacion = false;
                 }
-                if ($validacion) {
-                    return ["error" => false, 'parametros' => $values];
-                } else {
-                    http_response_code(400);
-                    return ["error" => true, "mensaje" => "faltan parametros los siguientes parametros para relizar el registro: $parametros_faltantes"];
-                }
+               
             }
+
+            if ($validacion) {
+                return ["error" => false, 'parametros' => $values];
+            } else {
+                http_response_code(400);
+                return ["error" => true, "mensaje" => "faltan parametros los siguientes parametros para relizar el registro: $parametros_faltantes"];
+            }
+
         } else {
             return   ["error" => false, 'parametros' => $post];
         }

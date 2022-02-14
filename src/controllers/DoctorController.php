@@ -5,11 +5,11 @@ use Lennox\ApiClinica\models\Doctor;
 
 class DoctorController extends Controller{
 
-    static function registrarDoctor()
+    static function registrar()
     {
 
         $parametros = parent::require(['nombre', 'apellido', 'especializacion', 'genero', 'edad', 'telefono', 'email', 'dni']);
-
+               
         if($parametros['error']){
             return  json_encode($parametros);
         }else{
@@ -51,7 +51,23 @@ class DoctorController extends Controller{
 
     }
 
-   
+    static function update($id){
+
+
+
+        $parametros = parent::require(['nombre', 'apellido', 'especializacion' ,'genero', 'edad', 'telefono', 'email', 'dni'], false);
+
+        $doctor = new Doctor;
+
+       
+      
+        if(!is_null($parametros["parametros"])) {
+          
+            return json_encode($doctor->update($id ,$parametros['parametros']));
+        }else{
+            return json_encode(["error"=> false, "mensaje"=> "nada por actualizar"]);
+        }
+    }
 
 
 }

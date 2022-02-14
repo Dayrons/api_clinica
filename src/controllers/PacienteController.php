@@ -5,7 +5,7 @@ use Lennox\ApiClinica\models\Paciente;
 
 class PacienteController extends Controller{
 
-static function registrarPaciente()
+static function registrar()
 {
 
     $parametros = parent::require(['nombre', 'apellido',  'genero', 'edad', 'telefono', 'email', 'dni']);
