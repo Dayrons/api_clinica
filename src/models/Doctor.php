@@ -119,35 +119,39 @@ class Doctor extends Model{
 
     public function update($id, $parametros){
 
+        
         $doctor = $this->getId($id);
-           
 
         try {
-            
-            $query = $this->prepare("UPDATE doctores SET edad= ?,  nombre= ?, apellido= ?, genero=?,telefono= ?,   email=?, especializacion=?  WHERE id=$doctor->id");
+            if (!is_null($doctor)) {
+                $query = $this->prepare("UPDATE doctores SET edad= ?,  nombre= ?, apellido= ?, genero=?,telefono= ?,   email=?, especializacion=?  WHERE id=$doctor->id");
 
-            $query->execute(
-                [
-                    array_key_exists('edad' ,$parametros) ?  $parametros['edad']  : $doctor->edad,
-                    array_key_exists('nombre' ,$parametros)?  $parametros['nombre'] : $doctor->nombre ,
-                    array_key_exists('apellido' ,$parametros)  ? $parametros['apellido'] : $doctor->apellido , 
-                    array_key_exists('genero' ,$parametros)  ?  $parametros['genero']  : $doctor->genero,
-                    array_key_exists('telefono' ,$parametros) ? $parametros['telefono']  :  $doctor->telefono, 
-                    array_key_exists('email' ,$parametros)   ? $parametros['email']  :  $doctor->email,
-                    array_key_exists('especializacion' ,$parametros) ?  $parametros['especializacion']  : $doctor->especializacion,
+                $query->execute(
+                    [
+                        array_key_exists('edad', $parametros) ?  $parametros['edad']  : $doctor->edad,
+                        array_key_exists('nombre', $parametros) ?  $parametros['nombre'] : $doctor->nombre,
+                        array_key_exists('apellido', $parametros)  ? $parametros['apellido'] : $doctor->apellido,
+                        array_key_exists('genero', $parametros)  ?  $parametros['genero']  : $doctor->genero,
+                        array_key_exists('telefono', $parametros) ? $parametros['telefono']  :  $doctor->telefono,
+                        array_key_exists('email', $parametros)   ? $parametros['email']  :  $doctor->email,
+                        array_key_exists('especializacion', $parametros) ?  $parametros['especializacion']  : $doctor->especializacion,
 
-                ]
+                    ]
 
-            );
+                );
 
-            if($query->rowCount() > 0){
+                if ($query->rowCount() > 0) {
 
-                return ['error' => false, 'mensaje'=>'campos actualizados'];
+                    return ['error' => false, 'mensaje' => 'campos actualizados'];
+                } else {
+                    return ['error' => true, 'mensaje' => 'nada por actualizar'];
+                }
+            } else {
 
-            }else{
-                return ['error' => true, 'mensaje'=>'nada por actualizar'];
+                return ['error' => true, 'mensaje' => 'el id especificado no conincide con ningun doctor'];
 
             }
+            
 
         } catch (PDOException $e) {
 
