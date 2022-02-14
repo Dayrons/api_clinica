@@ -38,6 +38,8 @@ $router->get('/pacientes',function(){echo PacienteController::get();});
 
 $router->post('/pacientes',function(){echo PacienteController::registrarPaciente();});
 
+$router->put('/pacientes/{id}',function($id){echo PacienteController::update($id);});
+
 $router->delete('/pacientes/{id}',function($id){echo PacienteController::delete($id);});
 
 

@@ -47,7 +47,24 @@ static function delete($id){
 
 }
 
-   
+    static function update($id){
 
+        $parametros = parent::require(['nombre', 'apellido',  'genero', 'edad', 'telefono', 'email', 'dni'], false);
+
+        $paciente = new Paciente;
+
+       
+      
+        if(!is_null($parametros["parametros"])) {
+          
+            return json_encode($paciente->update($id ,$parametros['parametros']));
+        }else{
+            return json_encode(["error"=> false, "mensaje"=> "nada por actualizar"]);
+        }
+    
+        
+    }
+
+   
 
 }

@@ -155,6 +155,50 @@ class Paciente extends Model{
         }
     }
 
+
+    public function update($id, $parametros){
+
+        $paciente = $this->getId($id);
+           
+
+        try {
+            
+            $query = $this->prepare("UPDATE pacientes SET edad= ?,  nombre= ?, apellido= ?, genero=?, telefono= ?, email=?   WHERE id=$paciente->id");
+
+            $query->execute(
+                [
+                    array_key_exists('edad' ,$parametros) ?  $parametros['edad']  : $paciente->edad,
+                    array_key_exists('nombre' ,$parametros)?  $parametros['nombre'] : $paciente->nombre ,
+                    array_key_exists('apellido' ,$parametros)  ? $parametros['apellido'] : $paciente->apellido , 
+                    array_key_exists('genero' ,$parametros)  ?  $parametros['genero']  : $paciente->genero,
+                    array_key_exists('telefono' ,$parametros) ? $parametros['telefono']  :  $paciente->telefono, 
+                    array_key_exists('email' ,$parametros)   ? $parametros['email']  :  $paciente->email,
+
+                ]
+
+            );
+
+            if($query->rowCount() > 0){
+
+                return ['error' => false, 'mensaje'=>'campos actualizados'];
+
+            }else{
+                return ['error' => true, 'mensaje'=>'nada por actualizar'];
+
+            }
+
+        } catch (PDOException $e) {
+
+            print_r($e->getMessage());
+                error_log($e->getMessage());
+                return false;
+        }
+
+        return $paciente;
+
+    }
+
+
     private function exist($dni, $email)
     {
 
