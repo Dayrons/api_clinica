@@ -12,9 +12,10 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/config/');
 $dotenv->load();
 
 $router->get('/',function(){
-    $html = file_get_contents(  __DIR__.'/views/index.php');
-     print $html ;
+  
+     require  __DIR__.'/views/index.php' ;
 });
+
 
 $router->get('/cita',function(){echo CitaController::get();});
 
