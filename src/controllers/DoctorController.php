@@ -69,5 +69,12 @@ class DoctorController extends Controller{
         }
     }
 
+    static function aprobarCita($id){
+        
+    }
+    static function rechazarCita($id){
+
+    }
+
 
 }

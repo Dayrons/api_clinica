@@ -26,6 +26,7 @@ $router->post('/cita',function(){echo( CitaController::registrar());});
 $router->delete('/cita/{id}',function($id){echo( CitaController::delete($id));});
 
 
+
 $router->get('/doctores',function(){echo DoctorController::get();});
 
 $router->post('/doctores',function(){echo DoctorController::registrar() ;});
@@ -33,6 +34,10 @@ $router->post('/doctores',function(){echo DoctorController::registrar() ;});
 $router->put('/doctores/{id}',function($id){echo DoctorController::update($id) ;});
 
 $router->delete('/doctores/{id}',function($id){echo DoctorController::delete($id) ;});
+
+$router->post('/doctores/{id}/rechazar-cita',function($id){echo DoctorController::aprobarCita($id) ;});
+
+$router->post('/doctores/{id}/aprobar-cita',function($id){echo DoctorController::rechazarCita($id) ;});
 
 
 

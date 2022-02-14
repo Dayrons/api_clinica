@@ -26,12 +26,13 @@ class Cita  extends Model{
     {
         try {
             
-        $query = $this->prepare("INSERT INTO citas(doctor,paciente,  sintomas) VALUES (:doctor, :paciente, :sintomas)");
+        $query = $this->prepare("INSERT INTO citas(doctor,paciente,  sintomas, status ) VALUES (:doctor, :paciente, :sintomas, :status)");
 
         $query->execute([
             'paciente'=> $paciente->id,
             'doctor'=> $doctor->id,
             'sintomas' => $sintomas,
+            'status'=> 'pendiente'
         ]);
 
         } catch (PDOException $e) {

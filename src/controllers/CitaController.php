@@ -30,7 +30,9 @@ class CitaController extends Controller {
             $cita = ["cita" => [
                 "sintomas" => $cita["sintomas"],
                 "paciente" => [ "nombre" => $paciente->nombre, "dni" => $paciente->dni],
-                "doctor"  => ["nombre" => $doctor->nombre ,"especialidad" => $doctor->especializacion] ]];
+                "doctor"  => ["nombre" => $doctor->nombre ,"especialidad" => $doctor->especializacion],
+                "status" => $cita["status"]
+                ]];
 
             array_push($nuevasCitas,$cita);
 
@@ -108,6 +110,7 @@ class CitaController extends Controller {
     public  static function registrar()
     {
         $parametros = parent::require([ "sintomas", "dni" , "id_doctor"]);
+      
 
         if($parametros['error']){
 

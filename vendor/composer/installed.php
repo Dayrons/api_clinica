@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '40cd72fa33413b3e6c47dd0a274d9bb229759ea1',
+        'reference' => '888cef13408d007a78371ef3e90cd33f9d4d665c',
         'name' => 'lennox/api_clinica',
         'dev' => true,
     ),
@@ -29,12 +29,12 @@
             'dev_requirement' => false,
         ),
         'lennox/api_clinica' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '40cd72fa33413b3e6c47dd0a274d9bb229759ea1',
+            'reference' => '888cef13408d007a78371ef3e90cd33f9d4d665c',
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
